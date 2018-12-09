@@ -111,8 +111,8 @@ void setup() {
   Serial.print("Starting BME280... result of .begin(): 0x");
   delay(10);  //Make sure sensor had enough time to turn on. BME280 requires 2ms to start up.
   Serial.println(bmp280.begin(), HEX);
-  // Wake up every period (defined in var sleepMicroSec)
-  // and takes a number of samples (samples var).
+  // It wakes up every period (defined in var sleepMicroSec)
+  // and it takes a number of samples (samples var).
   // Calculates median value of each physical property
   
   for (int i = 0; i < samples; i++){
