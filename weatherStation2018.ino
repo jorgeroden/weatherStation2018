@@ -137,7 +137,6 @@ void setup() {
   pressure = m.median(preBMP280, 0, samples - 1);
   humidity = m.median(humBMP280, 0, samples - 1);
   tempCBMP = m.median(temBMP280, 0, samples - 1);
-  //float rainValue = m.median(nRainVal, 0, samples - 1);
   pressure = pressure * 0.01; // Pascal to milibar
   tempF = (1.8 * tempC) + 32;
   tempFBMP = (1.8 * tempCBMP) + 32;
@@ -147,44 +146,13 @@ void setup() {
   // waiting time is over 1 min 30 secs then go to sleep mode till next
   // time cycle (defined in var sleepMicroSec).
 
- /* Serial.println("-----------------------------------------");  
-  Serial.println("\n\nWake up");
-  WiFi.begin(ssid, password);  
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-  */
-  /*while (WiFi.status() != WL_CONNECTED) {
-   delay(1000);
-   Serial.print(wifiAttempts);Serial.println(" of 60");
-   wifiAttempts ++;
-   if (wifiAttempts > 60){ //More than 1 min waiting time
-                           //then sleep mode.
-     Serial.println(".");
-     
-     Serial.println("NO WIFI CONNECTION, GOING TO SLEEP MODE TO SAVE BATTERY.");
-     Serial.println("THESE DATA HAVE NOT BEEN SENT TO THE CLOUD IN THIS CYCLE.");
-     showMeasurements();
-     ESP.deepSleep(sleepMicroSec);
-    }
-   }*/
-  
-  /*if (WiFi.localIP() == ipZero ){
-    Serial.println("");
-    Serial.println("waiting for an IP Address...");
-    
- 
-    }
-  else{
-   */
   WiFi.begin(ssid, password); 
   Serial.println("");
   Serial.println("waiting for an IP Address...");
   
-  while (WiFi.localIP() == ipZero) { //The formula for retries
-                                     // WiFi.status() != WL_CONNECTION
-                                     // seems not to work. 
+  if (WiFi.localIP() == ipZero) { //The formula for retries
+                                  // WiFi.status() != WL_CONNECTION
+                                  // seems not to work. 
     
      Serial.println("NO WIFI CONNECTION, GOING TO SLEEP MODE TO SAVE BATTERY.");
      Serial.println("THESE DATA HAVE NOT BEEN SENT TO THE CLOUD IN THIS CYCLE.");
@@ -208,10 +176,7 @@ void setup() {
   
    Serial.println("SLEEPING... I WILL WAKE UP IN 15 MINUTES.");
    ESP.deepSleep(sleepMicroSec1);
-  //}
-    
-  
-
+ 
 }
 void showMeasurements(){
   
