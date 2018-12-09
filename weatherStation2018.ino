@@ -73,32 +73,25 @@ WiFiClient client;
 Median m;
 BME280 bmp280;
 
-// Monitor the data on https://thingspeak.com/channels/207881
+// Monitor the data in https://thingspeak.com/channels/207881
 const char* myAPIKey = "my-api-key";
 unsigned long myChannel = 207881;
 
-//const char* ssid = "here-SSID-name";
-//const char* password = "here-password";
+const char* ssid = "here-SSID-name";
+const char* password = "here-password";
 
 const char* server = "api.thingspeak.com";
 const int sleepMicroSec1 = 900e6; //15 min sleeping. Connect D0 to RST to wake up
 const int sleepMicroSec2 = 120e6; //2 min sleeping when WiFi connection fails. Connect D0 to RST to wake up
-
 const int samples = 50;  //greater numbers can overflow memory
 float temDS18[samples];  // Celsius DS18
 float temBMP280[samples];//Celsius BMP280 
 float preBMP280[samples]; // Pascal
 float humBMP280[samples]; // %
 float nRainVal[samples];
-
 float tempC,pressure, humidity, tempCBMP, tempF, tempFBMP;
-
 IPAddress ipZero(0,0,0,0);
-// --- raindrops module variables ----
-//int nRainIn = A0;
-//float rainValue;
-//String strRaining;
-//------------------------------------
+
 void setup() {
 
   Serial.begin(9600);
@@ -129,7 +122,7 @@ void setup() {
       temBMP280[i] = bmp280.readTempC();//Celsius
       ds18x20.requestTemperatures();
       temDS18[i] = ds18x20.getTempCByIndex(0);
-      //nRainVal[i] = analogRead(nRainIn);
+   
       
   }
   
