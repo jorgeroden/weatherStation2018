@@ -73,26 +73,16 @@ WiFiClient client;
 Median m;
 BME280 bmp280;
 
-
-const char* myAPIKey = "N6BG9PLJUYQY9RIN";
+// Monitor the data on https://thingspeak.com/channels/207881
+const char* myAPIKey = "my-api-key";
 unsigned long myChannel = 207881;
 
 //const char* ssid = "here-SSID-name";
 //const char* password = "here-password";
-//const char* ssid = "LPCA-iPad";
-//const char* password = "l3g@cy1p@d16!";
-//const char* ssid = "legacy-test";
-//const char* password = "legacytest";
-//const char* ssid = "legacy-guest";
-//const char* password = "Gu3$tGu3$t";
-
-const char* ssid = "FiOS-0EUZD";
-const char* password = "rodeo34fog6382plea";
 
 const char* server = "api.thingspeak.com";
-//const int sleepMicroSec = 900e6; //15 min sleeping. Connect D0 to RST to wake up
-const int sleepMicroSec1 = 60e6; //15 min sleeping. Connect D0 to RST to wake up
-const int sleepMicroSec2 = 30e6; //2 min sleeping when WiFi connection fails. Connect D0 to RST to wake up
+const int sleepMicroSec1 = 900e6; //15 min sleeping. Connect D0 to RST to wake up
+const int sleepMicroSec2 = 120e6; //2 min sleeping when WiFi connection fails. Connect D0 to RST to wake up
 
 const int samples = 50;  //greater numbers can overflow memory
 float temDS18[samples];  // Celsius DS18
