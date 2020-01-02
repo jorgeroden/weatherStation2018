@@ -58,14 +58,14 @@ float Median::median(float *values, int low, int high){
     
     if ((high) % 2 == 0)
     {//even
-        m = values[round (high / 2)];
+        m = values[int(round (high / 2))];
       
       } 
 
 
      else{//odd
-        float a = values[round (high / 2)];
-        float b = values[round (high / 2) + 1];
+        float a = values[int(round (high / 2))];
+        float b = values[int(round (high / 2)) + 1];
         m = (a + b) / 2;
         
       }
